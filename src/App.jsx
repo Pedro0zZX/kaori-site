@@ -17,10 +17,7 @@ function Protected({ children }) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-200 via-rose-100 to-white p-10 text-center">
         <h1 className="text-3xl font-bold text-pink-800 mb-4">🔒 Área protegida</h1>
-
-        <p className="text-pink-900 mb-4 text-lg">
-          Digite a senha para entrar, meu amor ❤️
-        </p>
+        <p className="text-pink-900 mb-4 text-lg">Digite a senha para entrar, meu amor ❤️</p>
 
         <input
           type="password"
@@ -90,9 +87,7 @@ export default function App() {
 
         {/* 🎥 Vídeo especial 1 */}
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
-          <h2 className="text-2xl text-pink-800 font-semibold mb-4">
-            Eu sei que vai entender porque escolhi esse vídeo ❤️
-          </h2>
+          <h2 className="text-2xl text-pink-800 font-semibold mb-4">Eu sei que vai entender porque escolhi esse vídeo ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
             <source src="/video1.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
@@ -101,9 +96,7 @@ export default function App() {
 
         {/* 🎥 Vídeo especial 2 */}
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
-          <h2 className="text-2xl text-pink-800 font-semibold mb-4">
-            Bastidores, você é minha inspiração Amorzinho ❤️
-          </h2>
+          <h2 className="text-2xl text-pink-800 font-semibold mb-4">Bastidores, você é minha inspiração Amorzinho ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
             <source src="/video2.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
@@ -114,7 +107,7 @@ export default function App() {
   );
 }
 
-// 📄 Página separada (caso ainda queira usar)
+// 📄 Página separada
 export function TextoPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-rose-100 to-pink-200 p-10 flex flex-col items-center">
@@ -139,3 +132,4 @@ export function TextoPage() {
       </a>
     </div>
   );
+}
