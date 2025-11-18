@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 // Componente de Moldura com Foto + Texto (sem música)
 function FotoCard({ imagem, texto }) {
   return (
+    <Protected>
     <motion.div
       className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-xl p-4 flex gap-4 items-center hover:shadow-2xl transition"
       whileHover={{ scale: 1.02 }}
@@ -19,6 +20,49 @@ function FotoCard({ imagem, texto }) {
 }
 
 // Página principal com fotos
+// Tela protegida por senha
+function Protected({ children }) {
+  const [senha, setSenha] = React.useState("");
+  const [autorizado, setAutorizado] = React.useState(false);
+
+  const senhaCorreta = "formyprinces@kaori";
+
+  const tentarEntrar = () => {
+    if (senha === senhaCorreta) setAutorizado(true);
+    else alert("Senha incorreta, amorzinho 😢");
+  };
+
+  if (!autorizado) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-200 via-rose-100 to-white p-10 text-center">
+        <h1 className="text-3xl font-bold text-pink-800 mb-4">
+          🔒 Área protegida
+        </h1>
+
+        <p className="text-pink-900 mb-4 text-lg">Digite a senha para entrar, meu amor ❤️</p>
+
+        <input
+          type="password"
+          value={senha}
+          onChange={(e) => setSenha(e.target.value)}
+          className="p-3 rounded-xl shadow-md border border-pink-300 focus:outline-none text-center"
+          placeholder="Digite a senha..."
+        />
+
+        <button
+          onClick={tentarEntrar}
+          className="mt-4 px-6 py-2 bg-pink-500 hover:bg-pink-600 text-white rounded-xl shadow-lg transition"
+        >
+          Entrar
+        </button>
+      </div>
+    </Protected>
+  );
+  }
+
+  return children;
+}
+
 export default function App() {
   const fotos = [
     {
