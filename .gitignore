@@ -1,2 +1,4 @@
 public/*.mp4
 public/*.MP4
+node_modules/
+public/*.mp4
