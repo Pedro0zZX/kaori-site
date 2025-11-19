@@ -58,6 +58,34 @@ function FotoCard({ imagem, texto }) {
 }
 
 // 🌸 Página principal
+// 🎵 Player de música
+function MusicPlayer() {
+  const audioRef = React.useRef(null);
+  const [tocando, setTocando] = React.useState(false);
+
+  const togglePlay = () => {
+    if (!tocando) {
+      audioRef.current.play();
+      setTocando(true);
+    } else {
+      audioRef.current.pause();
+      setTocando(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col items-center mt-10 p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg w-full max-w-xs">
+      <audio ref={audioRef} src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/Betel%20-%20Banda%20Universos%20-%20Banda%20Universos%20Oficial%20%28youtube%29.mp3"></audio>
+      <button
+        onClick={togglePlay}
+        className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-xl shadow-md transition text-lg"
+      >
+        {tocando ? "⏸ Pausar música" : "▶️ Tocar música"}
+      </button>
+    </div>
+  );
+}
+
 export default function App() {
   const fotos = [
     { imagem: "/foto1.jpg", texto: "Você ficou lindissima com a minha camisa do Led." },
@@ -85,11 +113,13 @@ export default function App() {
           ))}
         </div>
 
+        <MusicPlayer />
+
         {/* 🎥 Vídeo especial 1 */}
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Eu sei que vai entender porque escolhi esse vídeo ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video1.mp4" type="video/mp4" />
+            <source src="/video1.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
@@ -98,7 +128,7 @@ export default function App() {
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Bastidores, você é minha inspiração Amorzinho ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
+            <source src="/video2.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
