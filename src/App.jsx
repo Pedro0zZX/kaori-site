@@ -59,6 +59,7 @@ function FotoCard({ imagem, texto }) {
 
 // 🌸 Página principal
 // 🎵 Player de música
+// 🎵 Player de música estilizado
 function MusicPlayer() {
   const audioRef = React.useRef(null);
   const [tocando, setTocando] = React.useState(false);
@@ -74,14 +75,59 @@ function MusicPlayer() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10 p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg w-full max-w-xs">
+    <div className="flex flex-col items-center mt-10 p-5 bg-white/70 backdrop-blur-md rounded-3xl shadow-xl w-full max-w-xs border border-pink-200">
       <audio ref={audioRef} src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/Betel%20-%20Banda%20Universos%20-%20Banda%20Universos%20Oficial%20%28youtube%29.mp3"></audio>
+      <motion.button
+        onClick={togglePlay}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.97 }}
+        className="px-7 py-3 bg-gradient-to-r from-pink-400 to-pink-600 text-white font-semibold rounded-full shadow-lg drop-shadow-md transition flex items-center gap-2"
+      >
+        {tocando ? "⏸ Pausar música" : "▶️ Tocar música"}
+      </motion.button>
+    </div>
+  );
+}
+  };
+
+  return (
+    <div className="flex flex-col items-center mt-10 p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg w-full max-w-xs">
+      <audio ref={audioRef} src="/musica.mp3"></audio>
       <button
         onClick={togglePlay}
         className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-xl shadow-md transition text-lg"
       >
         {tocando ? "⏸ Pausar música" : "▶️ Tocar música"}
       </button>
+    </div>
+  );
+}
+
+// 💖 Animação de corações flutuando
+function HeartsAnimation() {
+  const hearts = Array.from({ length: 15 });
+
+  return (
+    <div className="pointer-events-none fixed inset-0 overflow-hidden z-10">
+      {hearts.map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, y: 0, x: Math.random() * window.innerWidth }}
+          animate={{
+            opacity: [0, 1, 1, 0],
+            y: [0, -300],
+            x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
+          }}
+          transition={{
+            duration: 6 + Math.random() * 4,
+            repeat: Infinity,
+            delay: Math.random() * 3,
+          }}
+          className="text-pink-400 text-3xl absolute"
+        >
+          ❤️
+        </motion.div>
+      ))}
     </div>
   );
 }
@@ -98,6 +144,7 @@ export default function App() {
 
   return (
     <Protected>
+      <HeartsAnimation />
       <div className="min-h-screen bg-gradient-to-b from-pink-200 via-rose-100 to-white p-10 flex flex-col items-center gap-6">
         <motion.h1
           className="text-4xl font-bold text-pink-800 mb-6 drop-shadow-sm"
@@ -119,7 +166,7 @@ export default function App() {
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Eu sei que vai entender porque escolhi esse vídeo ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video1.mp4" type="video/mp4" />
+            <source src="/video1.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
@@ -128,7 +175,7 @@ export default function App() {
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Bastidores, você é minha inspiração Amorzinho ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
+            <source src="/video2.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
