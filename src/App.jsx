@@ -17,7 +17,9 @@ function Protected({ children }) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-200 via-rose-100 to-white p-10 text-center">
         <h1 className="text-3xl font-bold text-pink-800 mb-4">🔒 Área protegida</h1>
-        <p className="text-pink-900 mb-4 text-lg">Digite a senha para entrar, meu amor ❤️</p>
+        <p className="text-pink-900 mb-4 text-lg">
+          Digite a senha para entrar, meu amor ❤️
+        </p>
 
         <input
           type="password"
@@ -57,8 +59,6 @@ function FotoCard({ imagem, texto }) {
   );
 }
 
-// 🌸 Página principal
-// 🎵 Player de música
 // 🎵 Player de música estilizado
 function MusicPlayer() {
   const audioRef = React.useRef(null);
@@ -75,34 +75,31 @@ function MusicPlayer() {
   };
 
   return (
-    <div className="flex flex-col items-center mt-10 p-5 bg-white/70 backdrop-blur-md rounded-3xl shadow-xl w-full max-w-xs border border-pink-200">
-      <audio ref={audioRef} src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/Betel%20-%20Banda%20Universos%20-%20Banda%20Universos%20Oficial%20%28youtube%29.mp3"></audio>
-      <motion.button
-        onClick={togglePlay}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.97 }}
-        className="px-7 py-3 bg-gradient-to-r from-pink-400 to-pink-600 text-white font-semibold rounded-full shadow-lg drop-shadow-md transition flex items-center gap-2"
-      >
-        {tocando ? "⏸ Pausar música" : "▶️ Tocar música"}
-      </motion.button>
-    </div>
-  );
-}
-  
-  return (
     <div className="flex flex-col items-center mt-10 p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg w-full max-w-xs">
-      <audio ref={audioRef} src="/musica.mp3"></audio>
+      <audio
+        ref={audioRef}
+        src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/Betel%20-%20Banda%20Universos%20-%20Banda%20Universos%20Oficial%20%28youtube%29.mp3"
+      ></audio>
+
       <button
         onClick={togglePlay}
-        className="px-6 py-3 bg-pink-500 hover:bg-pink-600 text-white rounded-xl shadow-md transition text-lg"
+        className="px-6 py-3 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white rounded-full shadow-xl transition flex items-center gap-2 text-lg"
       >
-        {tocando ? "⏸ Pausar música" : "▶️ Tocar música"}
+        {tocando ? (
+          <>
+            ⏸ <span>Pausar música</span>
+          </>
+        ) : (
+          <>
+            ▶️ <span>Tocar música</span>
+          </>
+        )}
       </button>
     </div>
   );
+}
 
-
-// 💖 Animação de corações flutuando
+// ❤️ Animação de corações flutuando
 function HeartsAnimation() {
   const hearts = Array.from({ length: 15 });
 
@@ -111,18 +108,21 @@ function HeartsAnimation() {
       {hearts.map((_, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, y: 0, x: Math.random() * window.innerWidth }}
+          className="absolute text-pink-500 text-2xl"
+          initial={{
+            opacity: 0,
+            x: Math.random() * window.innerWidth,
+            y: window.innerHeight
+          }}
           animate={{
             opacity: [0, 1, 1, 0],
-            y: [0, -300],
-            x: [Math.random() * window.innerWidth, Math.random() * window.innerWidth],
+            y: -50,
           }}
           transition={{
-            duration: 6 + Math.random() * 4,
+            duration: 4 + Math.random() * 3,
             repeat: Infinity,
-            delay: Math.random() * 3,
+            delay: Math.random() * 2,
           }}
-          className="text-pink-400 text-3xl absolute"
         >
           ❤️
         </motion.div>
@@ -131,6 +131,7 @@ function HeartsAnimation() {
   );
 }
 
+// 🌸 Página principal
 export default function App() {
   const fotos = [
     { imagem: "/foto1.jpg", texto: "Você ficou lindissima com a minha camisa do Led." },
@@ -144,7 +145,9 @@ export default function App() {
   return (
     <Protected>
       <HeartsAnimation />
+
       <div className="min-h-screen bg-gradient-to-b from-pink-200 via-rose-100 to-white p-10 flex flex-col items-center gap-6">
+
         <motion.h1
           className="text-4xl font-bold text-pink-800 mb-6 drop-shadow-sm"
           initial={{ opacity: 0, y: -20 }}
@@ -163,18 +166,24 @@ export default function App() {
 
         {/* 🎥 Vídeo especial 1 */}
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
-          <h2 className="text-2xl text-pink-800 font-semibold mb-4">Eu sei que vai entender porque escolhi esse vídeo ❤️</h2>
+          <h2 className="text-2xl text-pink-800 font-semibold mb-4">
+            Eu sei que vai entender porque escolhi esse vídeo ❤️
+          </h2>
+
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="/video1.mp4" type="video/mp4" />
+            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video1.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
 
         {/* 🎥 Vídeo especial 2 */}
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
-          <h2 className="text-2xl text-pink-800 font-semibold mb-4">Bastidores, você é minha inspiração Amorzinho ❤️</h2>
+          <h2 className="text-2xl text-pink-800 font-semibold mb-4">
+            Bastidores, você é minha inspiração Amorzinho ❤️
+          </h2>
+
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="/video2.mp4" type="video/mp4" />
+            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
