@@ -88,8 +88,7 @@ function MusicPlayer() {
     </div>
   );
 }
-  };
-
+  
   return (
     <div className="flex flex-col items-center mt-10 p-4 bg-white/60 backdrop-blur-sm rounded-2xl shadow-lg w-full max-w-xs">
       <audio ref={audioRef} src="/musica.mp3"></audio>
@@ -101,7 +100,7 @@ function MusicPlayer() {
       </button>
     </div>
   );
-}
+
 
 // 💖 Animação de corações flutuando
 function HeartsAnimation() {
