@@ -119,7 +119,7 @@ export default function App() {
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Eu sei que vai entender porque escolhi esse vídeo ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="/video1.mp4" type="video/mp4" />
+            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video1.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
@@ -128,7 +128,7 @@ export default function App() {
         <div className="mt-10 w-full max-w-3xl flex flex-col items-center">
           <h2 className="text-2xl text-pink-800 font-semibold mb-4">Bastidores, você é minha inspiração Amorzinho ❤️</h2>
           <video controls className="rounded-2xl shadow-xl w-full bg-white/60 backdrop-blur-sm">
-            <source src="/video2.mp4" type="video/mp4" />
+            <source src="https://7lcg6pealmwsyd8e.public.blob.vercel-storage.com/video2.mp4" type="video/mp4" />
             Seu navegador não suporta vídeo.
           </video>
         </div>
